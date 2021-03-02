@@ -1,0 +1,41 @@
+{
+    "name": "c0dec0de/graph",
+    "description": "Simple graph representation and some algorithms",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": ">=8.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.18",
+        "phpunit/phpunit": "^9.5",
+        "infection/infection": "^0.21.0",
+        "phpstan/phpstan": "^0.12.76",
+        "squizlabs/php_codesniffer": "^3.5",
+        "vimeo/psalm": "^4.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Graph\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Graph\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "check": [
+            "@psalm",
+            "@phpstan",
+            "@cs-check",
+            "@test"
+        ],
+        "psalm": "psalm",
+        "phpstan": "phpstan analyse src --level 8 --ansi",
+        "cs-check": "phpcs -s --colors",
+        "cs-fix": "php-cs-fixer fix",
+        "test": "phpunit --colors=always tests --test-suffix .php",
+        "infection": "infection --threads=4"
+    }
+}
