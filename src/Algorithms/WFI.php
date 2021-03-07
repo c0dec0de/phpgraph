@@ -49,4 +49,33 @@ class WFI
 
         return $dist;
     }
+
+    /**
+     * Find median vertex using Floyd Warshall Algorithm
+     * Median vertex for which the sum of lengths of shortest paths to all other vertices is the smallest.
+     *
+     * @param GraphAbstract $graphAbstract
+     *
+     * @return int|string|null
+     */
+    public function medianVertex(GraphAbstract $graphAbstract): int|string|null
+    {
+        /** @var array<array-key, array> $A */
+        $A = $this->wfi($graphAbstract);
+
+        foreach ($A as $vertexName => &$path) {
+            $path = array_sum($path);
+        }
+
+        $median = null;
+        /** @var int $kId */
+        foreach ($graphAbstract->nodesNameIdMap() as $kName => $kId) {
+            $medianSum = $A[$median] ?? PHP_INT_MAX;
+            if ($A[$kName] < $medianSum) {
+                $median = $kName;
+            }
+        }
+
+        return $median;
+    }
 }

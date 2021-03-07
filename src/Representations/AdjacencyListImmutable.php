@@ -64,9 +64,9 @@ class AdjacencyListImmutable extends GraphAbstract
      *
      * @throws LogicException
      *
-     * @return GraphAbstract
+     * @return static
      */
-    public function setNodes(array|SplFixedArray $nodeNames): GraphAbstract
+    public function setNodes(array|SplFixedArray $nodeNames): static
     {
         if (sizeof($this->list) !== 0) {
             throw new LogicException('Nodes already been set');
@@ -95,9 +95,9 @@ class AdjacencyListImmutable extends GraphAbstract
      *
      * @throws LogicException
      *
-     * @return GraphAbstract
+     * @return static
      */
-    public function setEdges(array|SplFixedArray $edges): GraphAbstract
+    public function setEdges(array|SplFixedArray $edges): static
     {
         if ($this->edgesSetFlag) {
             throw new LogicException('Edges already been set');

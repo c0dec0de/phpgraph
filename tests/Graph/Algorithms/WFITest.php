@@ -35,4 +35,10 @@ class WFITest extends TestCase
         ];
         $this->assertSame($e, $wfi);
     }
+
+    public function testMedianVertex()
+    {
+        $wfiMedian = (new WFI())->medianVertex($this->adjacencyList);
+        $this->assertSame('D', $wfiMedian);
+    }
 }

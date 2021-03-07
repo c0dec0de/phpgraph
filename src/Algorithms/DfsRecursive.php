@@ -12,7 +12,7 @@ use Graph\GraphAbstract;
 class DfsRecursive
 {
     /**
-     * @var array<array-key,string>
+     * @var array<array-key,int>
      */
     private array $discovered;
 
