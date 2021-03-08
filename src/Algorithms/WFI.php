@@ -63,7 +63,6 @@ final class WFI
     {
         $A = $this->wfi($graphAbstract);
 
-
         foreach ($A as $vertexName => &$path) {
             $path = array_sum($path);
         }

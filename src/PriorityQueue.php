@@ -9,6 +9,7 @@ use SplPriorityQueue;
  * Class PriorityQueue
  *
  * @extends SplPriorityQueue<mixed,mixed>
+ *
  * @package Graph
  */
 final class PriorityQueue extends SplPriorityQueue

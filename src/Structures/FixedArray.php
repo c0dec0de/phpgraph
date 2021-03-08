@@ -9,6 +9,7 @@ use SplFixedArray;
  * Class FixedArray
  *
  * @extends SplFixedArray<mixed>
+ *
  * @package Graph\Structures
  */
 class FixedArray extends SplFixedArray
