@@ -8,7 +8,7 @@ use Graph\GraphAbstract;
 use Graph\PriorityQueue;
 use SplPriorityQueue;
 
-class Dijkstra
+final class Dijkstra
 {
     private int $maxDistance;
 
@@ -22,9 +22,9 @@ class Dijkstra
 
     /**
      * @param GraphAbstract $graph
-     * @param $source
+     * @param string $source
      *
-     * @return Generator
+     * @return Generator<array>
      * @psalm-suppress MixedArrayOffset
      */
     public function dijkstraArrayImpl(GraphAbstract $graph, string $source): Generator
@@ -67,9 +67,9 @@ class Dijkstra
      * Dijkstra implementation using priority queue
      *
      * @param GraphAbstract $graph
-     * @param $source
+     * @param string $source
      *
-     * @return Generator
+     * @return Generator<array>
      * @psalm-suppress MixedArrayOffset
      */
     public function dijkstraPriorityQueue(GraphAbstract $graph, string $source): Generator
@@ -112,9 +112,9 @@ class Dijkstra
     }
 
     /**
-     * @param array $array $array
+     * @param array<array-key,int> $array $array
      *
-     * @return array|null
+     * @return array<array-key,int>|null
      */
     private function extractMin(array &$array): ?array
     {

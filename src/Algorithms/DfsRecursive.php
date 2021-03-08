@@ -9,7 +9,7 @@ use Graph\GraphAbstract;
 /**
  * Class DfsRecursive
  */
-class DfsRecursive
+final class DfsRecursive
 {
     /**
      * @var array<array-key,int>
@@ -28,7 +28,7 @@ class DfsRecursive
      * @param GraphAbstract $graph
      * @param string $v
      *
-     * @return Generator
+     * @return Generator<string>
      */
     public function dfsRecursive(GraphAbstract $graph, string $v): Generator
     {

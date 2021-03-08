@@ -7,7 +7,7 @@ use Generator;
 use Graph\GraphAbstract;
 use SplQueue;
 
-class Bfs
+final class Bfs
 {
     /**
      * Breadth-first search

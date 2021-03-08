@@ -34,7 +34,7 @@
         "psalm": "psalm",
         "phpstan": "phpstan analyse src --level 8 --ansi",
         "cs-check": "phpcs -s --colors",
-        "cs-fix": "php-cs-fixer fix",
+        "cs-fix": "php-cs-fixer fix --verbose",
         "test": "phpunit --colors=always tests --test-suffix .php",
         "infection": "infection --threads=4"
     }

@@ -3,7 +3,15 @@ declare(strict_types=1);
 
 namespace Graph\Structures;
 
-class FixedArray extends \SplFixedArray
+use SplFixedArray;
+
+/**
+ * Class FixedArray
+ *
+ * @extends SplFixedArray<mixed>
+ * @package Graph\Structures
+ */
+class FixedArray extends SplFixedArray
 {
     /**
      * Add value

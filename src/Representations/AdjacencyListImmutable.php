@@ -11,8 +11,11 @@ use SplFixedArray;
 /**
  * Class AdjacencyListImmutable
  */
-class AdjacencyListImmutable extends GraphAbstract
+final class AdjacencyListImmutable extends GraphAbstract
 {
+    /**
+     * @var SplFixedArray<mixed>
+     */
     private SplFixedArray $list;
     private bool $edgesSetFlag;
 
@@ -29,7 +32,7 @@ class AdjacencyListImmutable extends GraphAbstract
     /**
      * Return adjacency list
      *
-     * @return SplFixedArray
+     * @return SplFixedArray<mixed>
      */
     public function list(): SplFixedArray
     {
@@ -39,12 +42,12 @@ class AdjacencyListImmutable extends GraphAbstract
     /**
      * Return edges
      *
-     * @return array
+     * @return array<array-key, array>
      */
     public function edges(): array
     {
         $edgesList = [];
-        /** @var SplFixedArray $edges */
+        /** @var SplFixedArray<mixed> $edges */
         foreach ($this->list as $node => $edges) {
             /** @var array<int, int> $edge */
             foreach ($edges as $edge) {
@@ -60,13 +63,13 @@ class AdjacencyListImmutable extends GraphAbstract
     }
 
     /**
-     * @param array|SplFixedArray $nodeNames
+     * @param array<array-key,mixed>|SplFixedArray<mixed> $nodeNames
      *
      * @throws LogicException
      *
-     * @return static
+     * @return AdjacencyListImmutable
      */
-    public function setNodes(array|SplFixedArray $nodeNames): static
+    public function setNodes(array|SplFixedArray $nodeNames): AdjacencyListImmutable
     {
         if (sizeof($this->list) !== 0) {
             throw new LogicException('Nodes already been set');
@@ -91,13 +94,13 @@ class AdjacencyListImmutable extends GraphAbstract
     }
 
     /**
-     * @param array|SplFixedArray $edges
+     * @param array<array-key,mixed>|SplFixedArray<mixed> $edges
      *
      * @throws LogicException
      *
-     * @return static
+     * @return AdjacencyListImmutable
      */
-    public function setEdges(array|SplFixedArray $edges): static
+    public function setEdges(array|SplFixedArray $edges): AdjacencyListImmutable
     {
         if ($this->edgesSetFlag) {
             throw new LogicException('Edges already been set');
@@ -137,9 +140,9 @@ class AdjacencyListImmutable extends GraphAbstract
     }
 
     /**
-     * @param $fromKey
-     * @param $toKey
-     * @param $weight
+     * @param int $fromKey
+     * @param int $toKey
+     * @param int $weight
      *
      * @return void
      *
@@ -147,7 +150,7 @@ class AdjacencyListImmutable extends GraphAbstract
      */
     private function addEdge(int $fromKey, int $toKey, int $weight): void
     {
-        /** @var SplFixedArray $nodeRow */
+        /** @var SplFixedArray<mixed> $nodeRow */
         $nodeRow = $this->list[$fromKey];
         $currentSize = $nodeRow->getSize();
         $newSize = $currentSize + 1;

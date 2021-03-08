@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Graph\Representations;
 
-class Edge
+final class Edge
 {
     public string $node1;
     public string $node2;

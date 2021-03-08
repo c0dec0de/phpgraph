@@ -10,7 +10,7 @@ use Graph\GraphAbstract;
  *
  * @package Graph\Algorithms
  */
-class WFI
+final class WFI
 {
 
     /**
@@ -19,7 +19,7 @@ class WFI
      *
      * @param GraphAbstract $graph
      *
-     * @return array
+     * @return array<array-key,array>
      */
     public function wfi(GraphAbstract $graph): array
     {
@@ -53,6 +53,7 @@ class WFI
     /**
      * Find median vertex using Floyd Warshall Algorithm
      * Median vertex for which the sum of lengths of shortest paths to all other vertices is the smallest.
+     * More: http://www.graph-magics.com/articles/median.php
      *
      * @param GraphAbstract $graphAbstract
      *
@@ -60,16 +61,17 @@ class WFI
      */
     public function medianVertex(GraphAbstract $graphAbstract): int|string|null
     {
-        /** @var array<array-key, array> $A */
         $A = $this->wfi($graphAbstract);
+
 
         foreach ($A as $vertexName => &$path) {
             $path = array_sum($path);
         }
 
         $median = null;
-        /** @var int $kId */
+
         foreach ($graphAbstract->nodesNameIdMap() as $kName => $kId) {
+            /** @var array<array-key,int> $A */
             $medianSum = $A[$median] ?? PHP_INT_MAX;
             if ($A[$kName] < $medianSum) {
                 $median = $kName;

@@ -5,7 +5,7 @@ namespace Graph\Representations;
 
 use Graph\Structures\FixedArray;
 
-class Edges extends FixedArray
+final class Edges extends FixedArray
 {
     /**
      * @param string $node1

@@ -5,6 +5,11 @@ namespace Graph;
 
 use SplFixedArray;
 
+/**
+ * Class GraphAbstract
+ *
+ * @package Graph
+ */
 abstract class GraphAbstract
 {
     protected ?bool $isDigraph;
@@ -14,7 +19,7 @@ abstract class GraphAbstract
      */
     protected array $nodesNameIdMap;
     /**
-     * @var array<array-key, string>|SplFixedArray
+     * @var array<array-key, string>|SplFixedArray<mixed>
      */
     protected array|SplFixedArray $nodesIdNameMap;
 
@@ -48,7 +53,7 @@ abstract class GraphAbstract
 
 
     /**
-     * @return array<array-key, string>|SplFixedArray
+     * @return array<array-key, string>|SplFixedArray<mixed>
      */
     public function nodesIdNameMap(): array|SplFixedArray
     {
@@ -65,28 +70,28 @@ abstract class GraphAbstract
     }
 
     /**
-     * @param array|SplFixedArray $nodeNames
+     * @param array<array-key,mixed>|SplFixedArray<mixed> $nodeNames
      *
      * @return $this
      */
     public abstract function setNodes(array|SplFixedArray $nodeNames): self;
 
     /**
-     * @param array|SplFixedArray $edges
+     * @param array<array-key,mixed>|SplFixedArray<mixed> $edges
      *
      * @return $this
      */
     public abstract function setEdges(array|SplFixedArray $edges): self;
 
     /**
-     * @return array
+     * @return array<array-key,array>
      */
     public abstract function edges(): array;
 
     /**
      * @param string $vertex
      *
-     * @return SplFixedArray|array<int,int>
+     * @return array<int,int>|SplFixedArray<mixed>
      */
-    public abstract function adjacentEdgesIds(string $vertex): SplFixedArray|array;
+    public abstract function adjacentEdgesIds(string $vertex): array|SplFixedArray;
 }

@@ -5,7 +5,13 @@ namespace Graph;
 
 use SplPriorityQueue;
 
-class PriorityQueue extends SplPriorityQueue
+/**
+ * Class PriorityQueue
+ *
+ * @extends SplPriorityQueue<mixed,mixed>
+ * @package Graph
+ */
+final class PriorityQueue extends SplPriorityQueue
 {
 
     /**
@@ -26,7 +32,7 @@ class PriorityQueue extends SplPriorityQueue
     /**
      * Checks if element is in queue
      *
-     * @param $element
+     * @param mixed $element
      *
      * @return bool
      */
