@@ -41,4 +41,31 @@ class WFITest extends TestCase
         $wfiMedian = (new WFI())->medianVertex($this->adjacencyList);
         $this->assertSame('D', $wfiMedian);
     }
+
+    public function testGraphCenter()
+    {
+        $nodesArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
+        $adjacencyList = new AdjacencyListImmutable();
+        $nodes = new \Graph\Representations\Nodes();
+        $edges = new \Graph\Representations\Edges();
+        foreach ($nodesArray as $nodeName) {
+            $nodes->add($nodeName);
+        }
+        $edges->addEdge('A', 'B', 1);
+        $edges->addEdge('B', 'E', 1);
+        $edges->addEdge('E', 'F', 1);
+        $edges->addEdge('F', 'G', 1);
+        $edges->addEdge('G', 'C', 1);
+        $edges->addEdge('C', 'A', 1);
+        $edges->addEdge('D', 'A', 1);
+        $edges->addEdge('D', 'B', 1);
+        $edges->addEdge('D', 'E', 1);
+        $edges->addEdge('D', 'F', 1);
+        $edges->addEdge('D', 'G', 1);
+        $edges->addEdge('D', 'C', 1);
+        $adjacencyList->setNodes($nodes)->setEdges($edges);
+
+        $wfiGraphCenter = (new WFI())->graphCenter($adjacencyList);
+        $this->assertSame('D', $wfiGraphCenter);
+    }
 }

@@ -53,7 +53,6 @@ final class WFI
     /**
      * Find median vertex using Floyd Warshall Algorithm
      * Median vertex for which the sum of lengths of shortest paths to all other vertices is the smallest.
-     * More: http://www.graph-magics.com/articles/median.php
      *
      * @param GraphAbstract $graphAbstract
      *
@@ -78,5 +77,41 @@ final class WFI
         }
 
         return $median;
+    }
+
+    /**
+     * Finds vertex for which the length of shortest path to the farthest vertex is the smallest.
+     *
+     * @param GraphAbstract $graphAbstract
+     *
+     * @return string|null
+     */
+    public function graphCenter(GraphAbstract $graphAbstract): string|null
+    {
+        $A = $this->wfi($graphAbstract);
+
+        /** @var array<int,int> $dist */
+        $dist = [];
+        foreach ($graphAbstract->nodesNameIdMap() as $iName => $iId) {
+            $dist[$iId] = 0;
+            foreach ($graphAbstract->nodesNameIdMap() as $jName => $jId) {
+                $d = $dist[$iId] ?? 0;
+                if (isset($A[$iName][$jName]) and $iId !== $jId and $A[$iName][$jName] > $d) {
+                    $dist[$iId] = (int)$A[$iName][$jName];
+                }
+            }
+        }
+        $center = 1;
+        foreach ($graphAbstract->nodesNameIdMap() as $iName => $iId) {
+            if ($dist[$iId] < $dist[$center]) {
+                $center = $iId;
+            }
+        }
+
+        if (isset($graphAbstract->nodesIdNameMap()[$center])) {
+            return (string)$graphAbstract->nodesIdNameMap()[$center];
+        }
+
+        return null;
     }
 }
