@@ -1,8 +1,11 @@
 <?php
 
-namespace Graph\Algorithms;
+namespace GraphTests\Graph\Algorithms;
 
+use Graph\Algorithms\WFI;
 use Graph\Representations\AdjacencyListImmutable;
+use Graph\Representations\Edges;
+use Graph\Representations\Nodes;
 use PHPUnit\Framework\TestCase;
 
 class WFITest extends TestCase
@@ -12,8 +15,8 @@ class WFITest extends TestCase
     {
         $nodesArray = ['A', 'B', 'C', 'D', 'E'];
         $adjacencyList = new AdjacencyListImmutable();
-        $nodes = new \Graph\Representations\Nodes();
-        $edges = new \Graph\Representations\Edges();
+        $nodes = new Nodes();
+        $edges = new Edges();
         foreach ($nodesArray as $nodeName) {
             $nodes->add($nodeName);
         }
@@ -25,7 +28,7 @@ class WFITest extends TestCase
 
     public function testWfi()
     {
-        $wfi = (new WFI())->wfi($this->adjacencyList);
+        $wfi = new WFI()->wfi($this->adjacencyList);
         $e = [
             'A' => ['B' => 1, 'C' => 3, 'A' => 0],
             'B' => ['A' => 1, 'C' => 2, 'B' => 0],
@@ -38,7 +41,7 @@ class WFITest extends TestCase
 
     public function testMedianVertex()
     {
-        $wfiMedian = (new WFI())->medianVertex($this->adjacencyList);
+        $wfiMedian = new WFI()->medianVertex($this->adjacencyList);
         $this->assertSame('D', $wfiMedian);
     }
 
@@ -46,8 +49,8 @@ class WFITest extends TestCase
     {
         $nodesArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
         $adjacencyList = new AdjacencyListImmutable();
-        $nodes = new \Graph\Representations\Nodes();
-        $edges = new \Graph\Representations\Edges();
+        $nodes = new Nodes();
+        $edges = new Edges();
         foreach ($nodesArray as $nodeName) {
             $nodes->add($nodeName);
         }
@@ -65,7 +68,7 @@ class WFITest extends TestCase
         $edges->addEdge('D', 'C', 1);
         $adjacencyList->setNodes($nodes)->setEdges($edges);
 
-        $wfiGraphCenter = (new WFI())->graphCenter($adjacencyList);
+        $wfiGraphCenter = new WFI()->graphCenter($adjacencyList);
         $this->assertSame('D', $wfiGraphCenter);
     }
 }

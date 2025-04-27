@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Graph;
 
@@ -39,6 +39,7 @@ abstract class GraphAbstract
     public function setDirected(): self
     {
         $this->isDigraph = true;
+
         return $this;
     }
 
@@ -48,9 +49,9 @@ abstract class GraphAbstract
     public function setUndirected(): self
     {
         $this->isDigraph = false;
+
         return $this;
     }
-
 
     /**
      * @return array<array-key, string>|SplFixedArray<mixed>
@@ -59,7 +60,6 @@ abstract class GraphAbstract
     {
         return $this->nodesIdNameMap;
     }
-
 
     /**
      * @return array<array-key, int>
@@ -74,24 +74,24 @@ abstract class GraphAbstract
      *
      * @return $this
      */
-    public abstract function setNodes(array|SplFixedArray $nodeNames): self;
+    abstract public function setNodes(array|SplFixedArray $nodeNames): self;
 
     /**
      * @param array<array-key,mixed>|SplFixedArray<mixed> $edges
      *
      * @return $this
      */
-    public abstract function setEdges(array|SplFixedArray $edges): self;
+    abstract public function setEdges(array|SplFixedArray $edges): self;
 
     /**
      * @return array<array-key,array>
      */
-    public abstract function edges(): array;
+    abstract public function edges(): array;
 
     /**
      * @param string $vertex
      *
      * @return array<int,int>|SplFixedArray<mixed>
      */
-    public abstract function adjacentEdgesIds(string $vertex): array|SplFixedArray;
+    abstract public function adjacentEdgesIds(string $vertex): array|SplFixedArray;
 }

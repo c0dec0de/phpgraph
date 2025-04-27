@@ -1,7 +1,9 @@
 <?php
 
-namespace Graph\Representations;
+namespace GraphTests\Graph\Representations;
 
+use Graph\Representations\Edge;
+use Graph\Representations\Edges;
 use PHPUnit\Framework\TestCase;
 
 class EdgesTest extends TestCase

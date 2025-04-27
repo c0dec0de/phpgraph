@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Graph\Algorithms;
 
@@ -12,10 +12,9 @@ use Graph\GraphAbstract;
  */
 final class WFI
 {
-
     /**
      * Floyd–Warshall algorithm
-     * Find shortest paths between all pairs of vertices in directed weighted graph
+     * Find the shortest paths between all pairs of vertices in directed weighted graph
      *
      * @param GraphAbstract $graph
      *
@@ -33,15 +32,16 @@ final class WFI
         foreach ($nodes as $vertexLabel => $id) {
             $dist[$vertexLabel][$vertexLabel] = 0;
         }
-        foreach ($nodes as $k => $kId) {
-            foreach ($nodes as $i => $iId) {
-                foreach ($nodes as $j => $jId) {
-                    /** @var int $ij */
-                    $ij = $dist[$i][$j] ?? PHP_INT_MAX;
-                    /** @var int $ikKj */
-                    $ikKj = (($dist[$i][$k] ?? PHP_INT_MAX) + ($dist[$k][$j] ?? PHP_INT_MAX));
-                    if ($ij > $ikKj) {
-                        $dist[$i][$j] = $ikKj;
+
+        foreach ($nodes as $intermediateNodeName => $intermediateNodeId) {
+            foreach ($nodes as $startingNodeName => $startingNodeId) {
+                foreach ($nodes as $destinationNodeName => $destinationNodeId) {
+                    /** @var int $shorterPathFromStartingToDestination */
+                    $shorterPathFromStartingToDestination = $dist[$startingNodeName][$destinationNodeName] ?? PHP_INT_MAX;
+                    /** @var int $potentialShorterPathThroughIntermediateNode */
+                    $potentialShorterPathThroughIntermediateNode = (($dist[$startingNodeName][$intermediateNodeName] ?? PHP_INT_MAX) + ($dist[$intermediateNodeName][$destinationNodeName] ?? PHP_INT_MAX));
+                    if ($shorterPathFromStartingToDestination > $potentialShorterPathThroughIntermediateNode) {
+                        $dist[$startingNodeName][$destinationNodeName] = $potentialShorterPathThroughIntermediateNode;
                     }
                 }
             }
@@ -97,7 +97,7 @@ final class WFI
             foreach ($graphAbstract->nodesNameIdMap() as $jName => $jId) {
                 $d = $dist[$iId] ?? 0;
                 if (isset($A[$iName][$jName]) and $iId !== $jId and $A[$iName][$jName] > $d) {
-                    $dist[$iId] = (int)$A[$iName][$jName];
+                    $dist[$iId] = (int) $A[$iName][$jName];
                 }
             }
         }
@@ -109,7 +109,7 @@ final class WFI
         }
 
         if (isset($graphAbstract->nodesIdNameMap()[$center])) {
-            return (string)$graphAbstract->nodesIdNameMap()[$center];
+            return (string) $graphAbstract->nodesIdNameMap()[$center];
         }
 
         return null;

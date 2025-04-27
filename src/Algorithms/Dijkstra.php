@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Graph\Algorithms;
 
@@ -25,6 +25,7 @@ final class Dijkstra
      * @param string $source
      *
      * @return Generator<array>
+     *
      * @psalm-suppress MixedArrayOffset
      */
     public function dijkstraArrayImpl(GraphAbstract $graph, string $source): Generator
@@ -48,7 +49,7 @@ final class Dijkstra
             /** @var string $uVertexName */
             $uVertexName = key($u);
             foreach ($graph->adjacentEdgesIds($uVertexName) as $zId => $edgeWeight) {
-                $zVertexName = (string)$idNameMap[$zId];
+                $zVertexName = (string) $idNameMap[$zId];
                 if (isset($q[$zVertexName]) === false) {
                     continue;
                 }
@@ -70,6 +71,7 @@ final class Dijkstra
      * @param string $source
      *
      * @return Generator<array>
+     *
      * @psalm-suppress MixedArrayOffset
      */
     public function dijkstraPriorityQueue(GraphAbstract $graph, string $source): Generator
@@ -96,7 +98,7 @@ final class Dijkstra
             $u = $priorityQueue->extract();
             $uVertexName = $u['data'];
             foreach ($graph->adjacentEdgesIds($uVertexName) as $zId => $edgeWeight) {
-                $zVertexName = (string)$idNameMap[$zId];
+                $zVertexName = (string) $idNameMap[$zId];
                 if ($priorityQueue->isInQueue($zVertexName) === false) {
                     continue;
                 }

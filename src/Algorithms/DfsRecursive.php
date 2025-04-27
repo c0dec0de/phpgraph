@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Graph\Algorithms;
 
@@ -36,7 +36,7 @@ final class DfsRecursive
         yield $v;
         $directedEdges = $graph->adjacentEdgesIds($v);
         foreach ($directedEdges as $nodeId => $edgeWeight) {
-            $nodeName = (string)$graph->nodesIdNameMap()[$nodeId];
+            $nodeName = (string) $graph->nodesIdNameMap()[$nodeId];
             if (array_key_exists($nodeName, $this->discovered) === false) {
                 yield from self::dfsRecursive($graph, $nodeName);
             }

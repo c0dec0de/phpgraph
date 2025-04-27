@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Graph\Representations;
 
@@ -54,7 +54,7 @@ final class AdjacencyListImmutable extends GraphAbstract
                 $edgesList[] = [
                     $this->nodesIdNameMap[$node],
                     $this->nodesIdNameMap[$edge['0']],
-                    $edge['1']
+                    $edge['1'],
                 ];
             }
         }
@@ -81,7 +81,7 @@ final class AdjacencyListImmutable extends GraphAbstract
         $this->nodesIdNameMap = $nodeNames;
         /** @var int $value */
         foreach ($nodeNames as $key => $value) {
-            $this->nodesNameIdMap[$value] = (int)$key;
+            $this->nodesNameIdMap[$value] = (int) $key;
         }
         //        $this->nodesNameIdMap = array_flip($this->nodesIdNameMap);
 

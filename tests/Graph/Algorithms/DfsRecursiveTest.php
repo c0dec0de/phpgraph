@@ -1,8 +1,11 @@
 <?php
 
-namespace Graph\Algorithms;
+namespace GraphTests\Graph\Algorithms;
 
+use Graph\Algorithms\DfsRecursive;
 use Graph\Representations\AdjacencyListImmutable;
+use Graph\Representations\Edges;
+use Graph\Representations\Nodes;
 use PHPUnit\Framework\TestCase;
 
 class DfsRecursiveTest extends TestCase
@@ -12,8 +15,8 @@ class DfsRecursiveTest extends TestCase
     {
         $nodesArray = ['A', 'B', 'C', 'D', 'E'];
         $adjacencyList = new AdjacencyListImmutable();
-        $nodes = new \Graph\Representations\Nodes();
-        $edges = new \Graph\Representations\Edges();
+        $nodes = new Nodes();
+        $edges = new Edges();
         foreach ($nodesArray as $nodeName) {
             $nodes->add($nodeName);
         }
@@ -21,7 +24,7 @@ class DfsRecursiveTest extends TestCase
         $edges->addEdge('B', 'C', 2);
         $edges->addEdge('C', 'A', 3);
         $adjacencyList->setNodes($nodes)->setEdges($edges);
-        $dfs = (new DfsRecursive())->dfsRecursive($adjacencyList, 'A');
+        $dfs = new DfsRecursive()->dfsRecursive($adjacencyList, 'A');
         $steps = [];
         while ($dfs->valid()) {
             $steps[] = $dfs->current();

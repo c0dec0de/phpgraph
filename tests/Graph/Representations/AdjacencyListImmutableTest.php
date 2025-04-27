@@ -1,7 +1,10 @@
 <?php
 
-namespace Graph\Representations;
+namespace GraphTests\Graph\Representations;
 
+use Graph\Representations\AdjacencyListImmutable;
+use Graph\Representations\Edges;
+use Graph\Representations\Nodes;
 use PHPUnit\Framework\TestCase;
 
 class AdjacencyListImmutableTest extends TestCase
@@ -11,7 +14,7 @@ class AdjacencyListImmutableTest extends TestCase
     {
         $nodesArray = ['A', 'B', 'C', 'D', 'E'];
         $adjacencyList = new AdjacencyListImmutable();
-        $nodes = new \Graph\Representations\Nodes();
+        $nodes = new Nodes();
         foreach ($nodesArray as $nodeName) {
             $nodes->add($nodeName);
         }
@@ -25,8 +28,8 @@ class AdjacencyListImmutableTest extends TestCase
     {
         $nodesArray = ['A', 'B', 'C', 'D', 'E'];
         $adjacencyList = new AdjacencyListImmutable();
-        $nodes = new \Graph\Representations\Nodes();
-        $edges = new \Graph\Representations\Edges();
+        $nodes = new Nodes();
+        $edges = new Edges();
         foreach ($nodesArray as $nodeName) {
             $nodes->add($nodeName);
         }
@@ -42,8 +45,8 @@ class AdjacencyListImmutableTest extends TestCase
     {
         $nodesArray = ['A', 'B', 'C', 'D', 'E'];
         $adjacencyList = new AdjacencyListImmutable();
-        $nodes = new \Graph\Representations\Nodes();
-        $edges = new \Graph\Representations\Edges();
+        $nodes = new Nodes();
+        $edges = new Edges();
         foreach ($nodesArray as $nodeName) {
             $nodes->add($nodeName);
         }
@@ -63,8 +66,8 @@ class AdjacencyListImmutableTest extends TestCase
     {
         $nodesArray = ['A', 'B', 'C', 'D', 'E'];
         $adjacencyList = new AdjacencyListImmutable();
-        $nodes = new \Graph\Representations\Nodes();
-        $edges = new \Graph\Representations\Edges();
+        $nodes = new Nodes();
+        $edges = new Edges();
         foreach ($nodesArray as $nodeName) {
             $nodes->add($nodeName);
         }

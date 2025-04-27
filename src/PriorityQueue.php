@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Graph;
 
@@ -14,7 +14,6 @@ use SplPriorityQueue;
  */
 final class PriorityQueue extends SplPriorityQueue
 {
-
     /**
      * @param mixed $priority1
      * @param mixed $priority2

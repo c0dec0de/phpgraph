@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Graph\Structures;
 
@@ -20,6 +20,7 @@ class FixedArray extends SplFixedArray
      * @param mixed $value
      *
      * @return int index of added value
+     *
      * @psalm-suppress MixedAssignment
      */
     public function add(mixed $value): int

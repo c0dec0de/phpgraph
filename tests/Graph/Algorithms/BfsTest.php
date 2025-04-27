@@ -1,7 +1,8 @@
 <?php
 
-namespace Graph\Algorithms;
+namespace GraphTests\Graph\Algorithms;
 
+use Graph\Algorithms\Bfs;
 use Graph\Representations\AdjacencyListImmutable;
 use PHPUnit\Framework\TestCase;
 
@@ -21,7 +22,7 @@ class BfsTest extends TestCase
         $edges->addEdge('B', 'C', 2);
         $edges->addEdge('C', 'A', 3);
         $adjacencyList->setNodes($nodes)->setEdges($edges);
-        $bfs = (new Bfs())->bfs($adjacencyList, 'A');
+        $bfs = new Bfs()->bfs($adjacencyList, 'A');
         $steps = [];
         while ($bfs->valid()) {
             $steps[] = $bfs->current();

@@ -1,9 +1,12 @@
 <?php
 
-namespace Graph\Algorithms;
+namespace GraphTests\Graph\Algorithms;
 
+use Graph\Algorithms\Dijkstra;
 use Graph\GraphAbstract;
 use Graph\Representations\AdjacencyListImmutable;
+use Graph\Representations\Edges;
+use Graph\Representations\Nodes;
 use PHPUnit\Framework\TestCase;
 
 class DijkstraTest extends TestCase
@@ -13,8 +16,8 @@ class DijkstraTest extends TestCase
     {
         $nodesArray = ['A', 'B', 'C', 'D', 'E'];
         $adjacencyList = new AdjacencyListImmutable();
-        $nodes = new \Graph\Representations\Nodes();
-        $edges = new \Graph\Representations\Edges();
+        $nodes = new Nodes();
+        $edges = new Edges();
         foreach ($nodesArray as $nodeName) {
             $nodes->add($nodeName);
         }
@@ -26,7 +29,7 @@ class DijkstraTest extends TestCase
 
     public function testDijkstraArrayImpl()
     {
-        $dijkstra = (new Dijkstra())->dijkstraArrayImpl($this->adjacencyList, 'A');
+        $dijkstra = new Dijkstra()->dijkstraArrayImpl($this->adjacencyList, 'A');
         $weights = [];
         while ($dijkstra->valid()) {
             $weights[] = $dijkstra->current();
@@ -37,7 +40,7 @@ class DijkstraTest extends TestCase
 
     public function testDijkstraPriorityQueue()
     {
-        $dijkstra = (new Dijkstra())->dijkstraPriorityQueue($this->adjacencyList, 'A');
+        $dijkstra = new Dijkstra()->dijkstraPriorityQueue($this->adjacencyList, 'A');
         $weights = [];
         while ($dijkstra->valid()) {
             $weights[] = $dijkstra->current();
